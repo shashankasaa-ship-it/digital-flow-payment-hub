@@ -8,14 +8,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ArrowLeft, Building2, Plus, Check } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const CustomerOnboarding = () => {
+const CorporateOnboarding = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({
-    // Customer Details
-    customerName: "",
-    customerType: "retail", // retail or corporate
+    // Corporate Details
+    corporateName: "",
+    corporateType: "retail", // retail or corporate
     organizationName: "",
     contactPerson: "",
     email: "",
@@ -92,11 +92,11 @@ const CustomerOnboarding = () => {
 
   const handleSubmit = () => {
     toast({
-      title: "Customer Onboarded Successfully",
-      description: `${formData.customerName} has been onboarded and is pending approval`,
+      title: "Corporate Onboarded Successfully",
+      description: `${formData.corporateName} has been onboarded and is pending approval`,
     });
     // Reset form or navigate
-    navigate("/customer-list");
+    navigate("/corporate-list");
   };
 
   return (
@@ -114,8 +114,8 @@ const CustomerOnboarding = () => {
                 <Building2 className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Customer/Channel Onboarding</h1>
-                <p className="text-sm text-muted-foreground">Onboard new customers and payment channels</p>
+                <h1 className="text-xl font-bold text-foreground">Corporate/Channel Onboarding</h1>
+                <p className="text-sm text-muted-foreground">Onboard new corporates and payment channels</p>
               </div>
             </div>
           </div>
@@ -126,9 +126,9 @@ const CustomerOnboarding = () => {
         {/* Onboarding Description */}
         <Card className="mb-8 bg-gradient-secondary text-white">
           <CardContent className="p-6">
-            <h2 className="text-xl font-bold mb-3">Customer/Channel Onboarding Process</h2>
+            <h2 className="text-xl font-bold mb-3">Corporate/Channel Onboarding Process</h2>
             <p className="text-white/90 mb-4">
-              Our comprehensive onboarding process ensures seamless integration of new customers and payment channels 
+              Our comprehensive onboarding process ensures seamless integration of new corporates and payment channels
               into the Payment Hub Portal. This includes KYC verification, risk assessment, account setup, and 
               payment preference configuration.
             </p>
@@ -150,36 +150,36 @@ const CustomerOnboarding = () => {
         </Card>
 
         <div className="grid gap-8">
-          {/* Customer Details */}
+          {/* Corporate Details */}
           <Card>
             <CardHeader>
-              <CardTitle>Customer Details</CardTitle>
-              <CardDescription>Basic information about the customer/channel</CardDescription>
+              <CardTitle>Corporate Details</CardTitle>
+              <CardDescription>Basic information about the corporate/channel</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="customerName">Customer Name *</Label>
+                  <Label htmlFor="corporateName">Corporate Name *</Label>
                   <Input
-                    id="customerName"
-                    value={formData.customerName}
-                    onChange={(e) => handleInputChange("customerName", e.target.value)}
-                    placeholder="Enter customer name"
+                    id="corporateName"
+                    value={formData.corporateName}
+                    onChange={(e) => handleInputChange("corporateName", e.target.value)}
+                    placeholder="Enter corporate name"
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="customerType">Customer Type *</Label>
+                  <Label htmlFor="corporateType">Corporate Type *</Label>
                   <select
-                    id="customerType"
-                    value={formData.customerType}
-                    onChange={(e) => handleInputChange("customerType", e.target.value)}
+                    id="corporateType"
+                    value={formData.corporateType}
+                    onChange={(e) => handleInputChange("corporateType", e.target.value)}
                     className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md"
                   >
-                    <option value="retail">Retail Customer</option>
-                    <option value="corporate">Corporate Customer</option>
+                    <option value="retail">Retail Corporate</option>
+                    <option value="corporate">Corporate Corporate</option>
                   </select>
                 </div>
-                {formData.customerType === "corporate" && (
+                {formData.corporateType === "corporate" && (
                   <div className="space-y-2">
                     <Label htmlFor="organizationName">Organization Name</Label>
                     <Input
@@ -237,7 +237,7 @@ const CustomerOnboarding = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <CardTitle>Account Details</CardTitle>
-                  <CardDescription>Configure customer accounts for payment processing</CardDescription>
+                  <CardDescription>Configure corporate accounts for payment processing</CardDescription>
                 </div>
                 <Button onClick={addAccount} variant="outline">
                   <Plus className="h-4 w-4 mr-2" />
@@ -431,4 +431,4 @@ const CustomerOnboarding = () => {
   );
 };
 
-export default CustomerOnboarding;
+export default CorporateOnboarding;

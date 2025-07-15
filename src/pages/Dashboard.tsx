@@ -52,18 +52,18 @@ const Dashboard = () => {
       roles: ["admin"]
     },
     {
-      title: "Customer/Channel Onboarding",
-      description: "Onboard new customers and channels",
+      title: "Corporate/Channel Onboarding",
+      description: "Onboard new corporates and channels",
       icon: UserPlus,
       color: "bg-gradient-secondary",
       route: "/onboarding"
     },
     {
-      title: "Customer/Channel List",
-      description: "View and manage all customers",
+      title: "Corporate/Channel List",
+      description: "View and manage all corporates",
       icon: Building2,
       color: "bg-accent",
-      route: "/customer-list"
+      route: "/corporate-list"
     },
     {
       title: "Payment Holiday Calendar",
@@ -95,7 +95,7 @@ const Dashboard = () => {
     },
     {
       title: "Subscription Management",
-      description: "Manage customer payment subscriptions",
+      description: "Manage corporate payment subscriptions",
       icon: CreditCard,
       color: "bg-success",
       route: "/subscription-management"
@@ -107,7 +107,7 @@ const Dashboard = () => {
   );
 
   const stats = [
-    { title: "Total Customers", value: "2,847", icon: Users, change: "+12%" },
+    { title: "Total Corporates", value: "2,847", icon: Users, change: "+12%" },
     { title: "Active Channels", value: "156", icon: Building2, change: "+8%" },
     { title: "Today's Transactions", value: "$1.2M", icon: DollarSign, change: "+15%" },
     { title: "Success Rate", value: "99.8%", icon: TrendingUp, change: "+0.1%" }
@@ -174,7 +174,7 @@ const Dashboard = () => {
                 <p className="text-lg text-white/90 mb-6">
                   A comprehensive digital payment management platform that enables organizations to 
                   streamline payment processing, manage multiple channels, and provide superior 
-                  customer experiences across all payment methods.
+                  corporate experiences across all payment methods.
                 </p>
                 <div className="grid gap-3">
                   <div className="flex items-center gap-3">

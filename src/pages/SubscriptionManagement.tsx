@@ -15,7 +15,7 @@ const SubscriptionManagement = () => {
   const subscriptions = [
     {
       id: 1,
-      customerName: "TechCorp Solutions",
+      corporateName: "TechCorp Solutions",
       subscriptionType: "File Payment",
       plan: "Enterprise",
       status: "Active",
@@ -28,7 +28,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: 2,
-      customerName: "Global Enterprises",
+      corporateName: "Global Enterprises",
       subscriptionType: "International Payment",
       plan: "Premium",
       status: "Active",
@@ -41,7 +41,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: 3,
-      customerName: "StartupXYZ",
+      corporateName: "StartupXYZ",
       subscriptionType: "Open Payment",
       plan: "Basic",
       status: "Suspended",
@@ -54,7 +54,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: 4,
-      customerName: "Retail Chain Plus",
+      corporateName: "Retail Chain Plus",
       subscriptionType: "File Payment",
       plan: "Professional",
       status: "Active",
@@ -67,7 +67,7 @@ const SubscriptionManagement = () => {
     },
     {
       id: 5,
-      customerName: "Manufacturing Corp",
+      corporateName: "Manufacturing Corp",
       subscriptionType: "Domestic Payment",
       plan: "Enterprise",
       status: "Active",
@@ -81,7 +81,7 @@ const SubscriptionManagement = () => {
   ];
 
   const filteredSubscriptions = subscriptions.filter(sub =>
-    sub.customerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    sub.corporateName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     sub.subscriptionType.toLowerCase().includes(searchTerm.toLowerCase()) ||
     sub.plan.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -114,25 +114,25 @@ const SubscriptionManagement = () => {
     }
   };
 
-  const handleSuspendSubscription = (id: number, customerName: string) => {
+  const handleSuspendSubscription = (id: number, corporateName: string) => {
     toast({
       title: "Subscription Suspended",
-      description: `${customerName}'s subscription has been suspended`,
+      description: `${corporateName}'s subscription has been suspended`,
       variant: "destructive",
     });
   };
 
-  const handleReactivateSubscription = (id: number, customerName: string) => {
+  const handleReactivateSubscription = (id: number, corporateName: string) => {
     toast({
       title: "Subscription Reactivated",
-      description: `${customerName}'s subscription has been reactivated`,
+      description: `${corporateName}'s subscription has been reactivated`,
     });
   };
 
-  const handleRevokeSubscription = (id: number, customerName: string) => {
+  const handleRevokeSubscription = (id: number, corporateName: string) => {
     toast({
       title: "Subscription Revoked",
-      description: `${customerName}'s subscription has been permanently revoked`,
+      description: `${corporateName}'s subscription has been permanently revoked`,
       variant: "destructive",
     });
   };
@@ -153,7 +153,7 @@ const SubscriptionManagement = () => {
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Subscription Management</h1>
-                <p className="text-sm text-muted-foreground">Manage customer payment subscriptions</p>
+                <p className="text-sm text-muted-foreground">Manage corporate payment subscriptions</p>
               </div>
             </div>
           </div>
@@ -211,7 +211,7 @@ const SubscriptionManagement = () => {
                 <div className="flex items-start justify-between mb-4">
                   <div className="space-y-2">
                     <div className="flex items-center gap-3">
-                      <h3 className="text-xl font-semibold">{subscription.customerName}</h3>
+                      <h3 className="text-xl font-semibold">{subscription.corporateName}</h3>
                       {getStatusBadge(subscription.status)}
                       {getPlanBadge(subscription.plan)}
                     </div>
@@ -270,7 +270,7 @@ const SubscriptionManagement = () => {
                     <Button 
                       variant="outline" 
                       size="sm"
-                      onClick={() => handleSuspendSubscription(subscription.id, subscription.customerName)}
+                      onClick={() => handleSuspendSubscription(subscription.id, subscription.corporateName)}
                     >
                       <Pause className="h-3 w-3 mr-1" />
                       Suspend
@@ -279,7 +279,7 @@ const SubscriptionManagement = () => {
                     <Button 
                       variant="success" 
                       size="sm"
-                      onClick={() => handleReactivateSubscription(subscription.id, subscription.customerName)}
+                      onClick={() => handleReactivateSubscription(subscription.id, subscription.corporateName)}
                     >
                       <Play className="h-3 w-3 mr-1" />
                       Reactivate
@@ -289,7 +289,7 @@ const SubscriptionManagement = () => {
                   <Button 
                     variant="destructive" 
                     size="sm"
-                    onClick={() => handleRevokeSubscription(subscription.id, subscription.customerName)}
+                    onClick={() => handleRevokeSubscription(subscription.id, subscription.corporateName)}
                   >
                     <X className="h-3 w-3 mr-1" />
                     Revoke

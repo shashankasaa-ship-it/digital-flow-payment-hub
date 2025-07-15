@@ -7,8 +7,8 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import UserManagement from "./pages/UserManagement";
-import CustomerOnboarding from "./pages/CustomerOnboarding";
-import CustomerList from "./pages/CustomerList";
+import CorporateOnboarding from "./pages/CorporateOnboarding";
+import CorporateList from "./pages/CorporateList";
 import Analytics from "./pages/Analytics";
 import PaymentSearch from "./pages/PaymentSearch";
 import SubscriptionManagement from "./pages/SubscriptionManagement";
@@ -28,8 +28,8 @@ const App = () => (
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/user-management" element={<UserManagement />} />
-          <Route path="/onboarding" element={<CustomerOnboarding />} />
-          <Route path="/customer-list" element={<CustomerList />} />
+          <Route path="/onboarding" element={<CorporateOnboarding />} />
+          <Route path="/corporate-list" element={<CorporateList />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/payment-search" element={<PaymentSearch />} />
           <Route path="/subscription-management" element={<SubscriptionManagement />} />

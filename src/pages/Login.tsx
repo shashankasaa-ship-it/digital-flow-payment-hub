@@ -82,7 +82,7 @@ const Login = () => {
               <div>
                 <h3 className="text-lg font-semibold">Multi-Channel Management</h3>
                 <p className="text-white/80">
-                  Manage multiple payment channels and customer relationships in one place
+                  Manage multiple payment channels and corporate relationships in one place
                 </p>
               </div>
             </div>

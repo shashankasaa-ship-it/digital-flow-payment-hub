@@ -150,7 +150,7 @@ const HolidayCalendar = () => {
             <p className="text-white/90 mb-4">
               Comprehensive holiday calendar management for payment processing. Banks can configure national holidays, 
               operational cut-off times, and technical maintenance windows to ensure smooth payment operations 
-              across all channels and customer segments.
+              across all channels and corporate segments.
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-sm">
               <div>

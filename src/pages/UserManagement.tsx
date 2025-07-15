@@ -42,7 +42,7 @@ const UserManagement = () => {
 
   const roles = [
     { value: "user", label: "User", description: "Basic payment portal access" },
-    { value: "manager", label: "Channel Manager", description: "Manage customer channels and approvals" },
+    { value: "manager", label: "Channel Manager", description: "Manage corporate channels and approvals" },
     { value: "admin", label: "Administrator", description: "Full system access and user management" },
     { value: "auditor", label: "Auditor", description: "Read-only access for compliance monitoring" }
   ];

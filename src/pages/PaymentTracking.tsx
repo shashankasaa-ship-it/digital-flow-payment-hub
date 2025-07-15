@@ -48,7 +48,7 @@ const PaymentTracking = () => {
   const realtimePayments = [
     {
       id: "PAY001",
-      customer: "TechCorp Solutions",
+      corporate: "TechCorp Solutions",
       amount: "$15,000",
       status: "Processing",
       stage: "Authorization",
@@ -57,7 +57,7 @@ const PaymentTracking = () => {
     },
     {
       id: "PAY002",
-      customer: "Global Enterprises",
+      corporate: "Global Enterprises",
       amount: "$8,500",
       status: "Completed",
       stage: "Settlement",
@@ -66,7 +66,7 @@ const PaymentTracking = () => {
     },
     {
       id: "PAY003",
-      customer: "StartupXYZ",
+      corporate: "StartupXYZ",
       amount: "$2,200",
       status: "Failed",
       stage: "Validation",
@@ -75,7 +75,7 @@ const PaymentTracking = () => {
     },
     {
       id: "PAY004",
-      customer: "Retail Chain Plus",
+      corporate: "Retail Chain Plus",
       amount: "$25,000",
       status: "Pending",
       stage: "Queue",
@@ -240,14 +240,14 @@ const PaymentTracking = () => {
                 <div key={payment.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center text-white font-semibold">
-                      {payment.customer.charAt(0)}
+                      {payment.corporate.charAt(0)}
                     </div>
                     <div>
                       <div className="flex items-center gap-3">
                         <p className="font-medium">{payment.id}</p>
                         {getPaymentStatusBadge(payment.status)}
                       </div>
-                      <p className="text-sm text-muted-foreground">{payment.customer}</p>
+                      <p className="text-sm text-muted-foreground">{payment.corporate}</p>
                       <p className="text-xs text-muted-foreground">Stage: {payment.stage}</p>
                     </div>
                   </div>

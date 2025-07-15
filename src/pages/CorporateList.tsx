@@ -6,13 +6,13 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Search, Building2, Calendar, Settings, Star, Shield } from "lucide-react";
 
-const CustomerList = () => {
+const CorporateList = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
 
-  const customers = [
+  const corporates = [
     {
       id: 1,
       name: "TechCorp Solutions",
@@ -80,11 +80,11 @@ const CustomerList = () => {
     }
   ];
 
-  const filteredCustomers = customers.filter(customer => {
-    const matchesSearch = customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         customer.type.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesStatus = filterStatus === "all" || customer.status.toLowerCase() === filterStatus;
-    const matchesCategory = filterCategory === "all" || customer.category.toLowerCase() === filterCategory;
+  const filteredCorporates = corporates.filter(corporate => {
+    const matchesSearch = corporate.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         corporate.type.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesStatus = filterStatus === "all" || corporate.status.toLowerCase() === filterStatus;
+    const matchesCategory = filterCategory === "all" || corporate.category.toLowerCase() === filterCategory;
     
     return matchesSearch && matchesStatus && matchesCategory;
   });
@@ -145,8 +145,8 @@ const CustomerList = () => {
                 <Building2 className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">Customer/Channel List</h1>
-                <p className="text-sm text-muted-foreground">Manage customer accounts and channels</p>
+                <h1 className="text-xl font-bold text-foreground">Corporate/Channel List</h1>
+                <p className="text-sm text-muted-foreground">Manage corporate accounts and channels</p>
               </div>
             </div>
           </div>
@@ -161,7 +161,7 @@ const CustomerList = () => {
               <div className="relative flex-1 min-w-64">
                 <Search className="h-4 w-4 absolute left-3 top-3 text-muted-foreground" />
                 <Input
-                  placeholder="Search customers..."
+                  placeholder="Search corporates..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10"
@@ -191,34 +191,34 @@ const CustomerList = () => {
           </CardContent>
         </Card>
 
-        {/* Customer List */}
+        {/* Corporate List */}
         <div className="space-y-4">
-          {filteredCustomers.map((customer) => (
-            <Card key={customer.id} className="bg-gradient-card hover:shadow-hover transition-all duration-300">
+          {filteredCorporates.map((corporate) => (
+            <Card key={corporate.id} className="bg-gradient-card hover:shadow-hover transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                      {customer.name.charAt(0)}
+                      {corporate.name.charAt(0)}
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <h3 className="text-lg font-semibold">{customer.name}</h3>
-                        {getStatusBadge(customer.status)}
-                        {getCategoryBadge(customer.category)}
+                        <h3 className="text-lg font-semibold">{corporate.name}</h3>
+                        {getStatusBadge(corporate.status)}
+                        {getCategoryBadge(corporate.category)}
                       </div>
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>{customer.type} Customer</span>
+                        <span>{corporate.type} Corporate</span>
                         <span>•</span>
-                        <span>{customer.accountCount} Accounts</span>
+                        <span>{corporate.accountCount} Accounts</span>
                         <span>•</span>
-                        <span>Volume: {customer.monthlyVolume}/month</span>
+                        <span>Volume: {corporate.monthlyVolume}/month</span>
                         <span>•</span>
-                        <span>Onboarded: {customer.onboardDate}</span>
+                        <span>Onboarded: {corporate.onboardDate}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-muted-foreground">Payment Types:</span>
-                        {customer.paymentTypes.map((type, index) => (
+                        {corporate.paymentTypes.map((type, index) => (
                           <Badge key={index} variant="outline" className="text-xs">{type}</Badge>
                         ))}
                       </div>
@@ -229,9 +229,9 @@ const CustomerList = () => {
                     <div className="text-right">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-sm text-muted-foreground">Priority:</span>
-                        {getPriorityBadge(customer.priority)}
+                        {getPriorityBadge(corporate.priority)}
                       </div>
-                      <p className="text-xs text-muted-foreground">Last Activity: {customer.lastActivity}</p>
+                      <p className="text-xs text-muted-foreground">Last Activity: {corporate.lastActivity}</p>
                     </div>
                     
                     <div className="flex flex-col gap-2">
@@ -274,11 +274,11 @@ const CustomerList = () => {
           ))}
         </div>
 
-        {filteredCustomers.length === 0 && (
+        {filteredCorporates.length === 0 && (
           <Card>
             <CardContent className="p-12 text-center">
               <Building2 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-muted-foreground mb-2">No customers found</h3>
+              <h3 className="text-lg font-medium text-muted-foreground mb-2">No corporates found</h3>
               <p className="text-sm text-muted-foreground">Try adjusting your search or filter criteria</p>
             </CardContent>
           </Card>
@@ -288,4 +288,4 @@ const CustomerList = () => {
   );
 };
 
-export default CustomerList;
+export default CorporateList;

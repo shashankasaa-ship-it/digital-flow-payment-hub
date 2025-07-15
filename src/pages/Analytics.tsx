@@ -38,11 +38,11 @@ const Analytics = () => {
   };
 
   const recentTransactions = [
-    { id: "TXN001", customer: "TechCorp", amount: "$15,000", type: "Bulk", status: "Successful", time: "10:30 AM" },
-    { id: "TXN002", customer: "GlobalInc", amount: "$8,500", type: "Online", status: "Successful", time: "10:25 AM" },
-    { id: "TXN003", customer: "StartupXYZ", amount: "$2,200", type: "Subscription", status: "Failed", time: "10:20 AM" },
-    { id: "TXN004", customer: "RetailPlus", amount: "$25,000", type: "International", status: "Pending", time: "10:15 AM" },
-    { id: "TXN005", customer: "Enterprise Co", amount: "$50,000", type: "Bulk", status: "Successful", time: "10:10 AM" }
+    { id: "TXN001", corporate: "TechCorp", amount: "$15,000", type: "Bulk", status: "Successful", time: "10:30 AM" },
+    { id: "TXN002", corporate: "GlobalInc", amount: "$8,500", type: "Online", status: "Successful", time: "10:25 AM" },
+    { id: "TXN003", corporate: "StartupXYZ", amount: "$2,200", type: "Subscription", status: "Failed", time: "10:20 AM" },
+    { id: "TXN004", corporate: "RetailPlus", amount: "$25,000", type: "International", status: "Pending", time: "10:15 AM" },
+    { id: "TXN005", corporate: "Enterprise Co", amount: "$50,000", type: "Bulk", status: "Successful", time: "10:10 AM" }
   ];
 
   const getStatusBadge = (status: string) => {
@@ -131,7 +131,7 @@ const Analytics = () => {
                   <option value="summary">Summary Report</option>
                   <option value="detailed">Detailed Report</option>
                   <option value="channel">Channel Analysis</option>
-                  <option value="customer">Customer Analysis</option>
+                  <option value="corporate">Corporate Analysis</option>
                 </select>
               </div>
               <Button onClick={generateReport} variant="premium">
@@ -298,11 +298,11 @@ const Analytics = () => {
                 <div key={transaction.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center text-white font-semibold">
-                      {transaction.customer.charAt(0)}
+                      {transaction.corporate.charAt(0)}
                     </div>
                     <div>
                       <p className="font-medium">{transaction.id}</p>
-                      <p className="text-sm text-muted-foreground">{transaction.customer}</p>
+                      <p className="text-sm text-muted-foreground">{transaction.corporate}</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">

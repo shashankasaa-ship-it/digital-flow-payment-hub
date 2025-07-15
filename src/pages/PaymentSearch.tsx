@@ -29,7 +29,7 @@ const PaymentSearch = () => {
       amount: "$15,000",
       status: "Completed",
       timestamp: "2024-01-15 10:30:25",
-      customerName: "TechCorp Solutions",
+      corporateName: "TechCorp Solutions",
       paymentType: "Bulk Transfer",
       reference: "BULK001234",
       fees: "$25.00"
@@ -41,7 +41,7 @@ const PaymentSearch = () => {
       amount: "$8,500",
       status: "Pending",
       timestamp: "2024-01-15 09:15:42",
-      customerName: "Global Enterprises",
+      corporateName: "Global Enterprises",
       paymentType: "Online Payment",
       reference: "ONLINE5678",
       fees: "$15.00"
@@ -53,7 +53,7 @@ const PaymentSearch = () => {
       amount: "$2,200",
       status: "Failed",
       timestamp: "2024-01-15 08:45:15",
-      customerName: "StartupXYZ",
+      corporateName: "StartupXYZ",
       paymentType: "Subscription",
       reference: "SUB9876",
       fees: "$5.00"
@@ -259,7 +259,7 @@ const PaymentSearch = () => {
                         <h3 className="text-lg font-semibold">{payment.id}</h3>
                         {getStatusBadge(payment.status)}
                       </div>
-                      <p className="text-sm text-muted-foreground">{payment.customerName}</p>
+                      <p className="text-sm text-muted-foreground">{payment.corporateName}</p>
                       <p className="text-xs text-muted-foreground">{payment.timestamp}</p>
                     </div>
                     <div className="text-right">
