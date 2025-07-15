@@ -4,6 +4,16 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import UserManagement from "./pages/UserManagement";
+import CustomerOnboarding from "./pages/CustomerOnboarding";
+import CustomerList from "./pages/CustomerList";
+import Analytics from "./pages/Analytics";
+import PaymentSearch from "./pages/PaymentSearch";
+import SubscriptionManagement from "./pages/SubscriptionManagement";
+import PaymentTracking from "./pages/PaymentTracking";
+import HolidayCalendar from "./pages/HolidayCalendar";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -15,8 +25,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user-management" element={<UserManagement />} />
+          <Route path="/onboarding" element={<CustomerOnboarding />} />
+          <Route path="/customer-list" element={<CustomerList />} />
+          <Route path="/analytics" element={<Analytics />} />
+          <Route path="/payment-search" element={<PaymentSearch />} />
+          <Route path="/subscription-management" element={<SubscriptionManagement />} />
+          <Route path="/payment-tracking" element={<PaymentTracking />} />
+          <Route path="/holiday-calendar" element={<HolidayCalendar />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
