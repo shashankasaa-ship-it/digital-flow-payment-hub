@@ -26,37 +26,37 @@ const PaymentSearch = () => {
       id: "TXN12345",
       accountNumber: "ACC001234567",
       channelNumber: "CH001",
-      amount: "$15,000",
+      amount: "₹15,000",
       status: "Completed",
       timestamp: "2024-01-15 10:30:25",
       corporateName: "TechCorp Solutions",
       paymentType: "Bulk Transfer",
       reference: "BULK001234",
-      fees: "$25.00"
+      fees: "₹25.00"
     },
     {
       id: "TXN12346",
       accountNumber: "ACC001234568",
       channelNumber: "CH002",
-      amount: "$8,500",
+      amount: "₹8,500",
       status: "Pending",
       timestamp: "2024-01-15 09:15:42",
       corporateName: "Global Enterprises",
       paymentType: "Online Payment",
       reference: "ONLINE5678",
-      fees: "$15.00"
+      fees: "₹15.00"
     },
     {
       id: "TXN12347",
       accountNumber: "ACC001234569",
       channelNumber: "CH001",
-      amount: "$2,200",
+      amount: "₹2,200",
       status: "Failed",
       timestamp: "2024-01-15 08:45:15",
       corporateName: "StartupXYZ",
       paymentType: "Subscription",
       reference: "SUB9876",
-      fees: "$5.00"
+      fees: "₹5.00"
     }
   ]);
 

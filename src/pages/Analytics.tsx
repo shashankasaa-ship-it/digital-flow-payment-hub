@@ -19,9 +19,9 @@ const Analytics = () => {
       successRate: 98.6
     },
     volume: {
-      total: "$45.2M",
-      average: "$2,851",
-      peak: "$8.9M",
+      total: "₹45.2M",
+      average: "₹2,851",
+      peak: "₹8.9M",
       growth: "+12.5%"
     },
     channels: {
@@ -38,11 +38,11 @@ const Analytics = () => {
   };
 
   const recentTransactions = [
-    { id: "TXN001", corporate: "TechCorp", amount: "$15,000", type: "Bulk", status: "Successful", time: "10:30 AM" },
-    { id: "TXN002", corporate: "GlobalInc", amount: "$8,500", type: "Online", status: "Successful", time: "10:25 AM" },
-    { id: "TXN003", corporate: "StartupXYZ", amount: "$2,200", type: "Subscription", status: "Failed", time: "10:20 AM" },
-    { id: "TXN004", corporate: "RetailPlus", amount: "$25,000", type: "International", status: "Pending", time: "10:15 AM" },
-    { id: "TXN005", corporate: "Enterprise Co", amount: "$50,000", type: "Bulk", status: "Successful", time: "10:10 AM" }
+    { id: "TXN001", corporate: "TechCorp", amount: "₹15,000", type: "Bulk", status: "Successful", time: "10:30 AM" },
+    { id: "TXN002", corporate: "GlobalInc", amount: "₹8,500", type: "Online", status: "Successful", time: "10:25 AM" },
+    { id: "TXN003", corporate: "StartupXYZ", amount: "₹2,200", type: "Subscription", status: "Failed", time: "10:20 AM" },
+    { id: "TXN004", corporate: "RetailPlus", amount: "₹25,000", type: "International", status: "Pending", time: "10:15 AM" },
+    { id: "TXN005", corporate: "Enterprise Co", amount: "₹50,000", type: "Bulk", status: "Successful", time: "10:10 AM" }
   ];
 
   const getStatusBadge = (status: string) => {

@@ -21,7 +21,7 @@ const SubscriptionManagement = () => {
       status: "Active",
       startDate: "2023-06-15",
       nextBilling: "2024-02-15",
-      amount: "$2,500/month",
+      amount: "₹2,500/month",
       features: ["Bulk Processing", "API Access", "Priority Support"],
       transactionLimit: "Unlimited",
       frequency: "Monthly"
@@ -34,7 +34,7 @@ const SubscriptionManagement = () => {
       status: "Active",
       startDate: "2022-03-10",
       nextBilling: "2024-02-10",
-      amount: "$5,000/month",
+      amount: "₹5,000/month",
       features: ["Multi-Currency", "Swift Network", "Compliance Tools"],
       transactionLimit: "50,000/month",
       frequency: "Monthly"
@@ -47,7 +47,7 @@ const SubscriptionManagement = () => {
       status: "Suspended",
       startDate: "2023-11-20",
       nextBilling: "N/A",
-      amount: "$500/month",
+      amount: "₹500/month",
       features: ["Basic Processing", "Standard Support"],
       transactionLimit: "1,000/month",
       frequency: "Monthly"
@@ -60,7 +60,7 @@ const SubscriptionManagement = () => {
       status: "Active",
       startDate: "2023-01-05",
       nextBilling: "2024-02-05",
-      amount: "$1,800/month",
+      amount: "₹1,800/month",
       features: ["Scheduled Payments", "Reporting", "Integration Support"],
       transactionLimit: "25,000/month",
       frequency: "Monthly"
@@ -73,7 +73,7 @@ const SubscriptionManagement = () => {
       status: "Active",
       startDate: "2023-08-12",
       nextBilling: "2024-02-12",
-      amount: "$3,200/month",
+      amount: "₹3,200/month",
       features: ["High Volume", "Custom Workflows", "Dedicated Manager"],
       transactionLimit: "100,000/month",
       frequency: "Monthly"

@@ -49,7 +49,7 @@ const PaymentTracking = () => {
     {
       id: "PAY001",
       corporate: "TechCorp Solutions",
-      amount: "$15,000",
+      amount: "₹15,000",
       status: "Processing",
       stage: "Authorization",
       timestamp: "10:35:22",
@@ -58,7 +58,7 @@ const PaymentTracking = () => {
     {
       id: "PAY002",
       corporate: "Global Enterprises",
-      amount: "$8,500",
+      amount: "₹8,500",
       status: "Completed",
       stage: "Settlement",
       timestamp: "10:33:15",
@@ -67,7 +67,7 @@ const PaymentTracking = () => {
     {
       id: "PAY003",
       corporate: "StartupXYZ",
-      amount: "$2,200",
+      amount: "₹2,200",
       status: "Failed",
       stage: "Validation",
       timestamp: "10:30:45",
@@ -76,7 +76,7 @@ const PaymentTracking = () => {
     {
       id: "PAY004",
       corporate: "Retail Chain Plus",
-      amount: "$25,000",
+      amount: "₹25,000",
       status: "Pending",
       stage: "Queue",
       timestamp: "10:36:10",

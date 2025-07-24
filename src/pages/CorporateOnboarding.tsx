@@ -23,7 +23,7 @@ const CorporateOnboarding = () => {
     address: "",
     
     // Account Details
-    accounts: [{ accountNumber: "", accountType: "", branchName: "", currency: "USD" }],
+    accounts: [{ accountNumber: "", accountType: "", branchName: "", currency: "INR" }],
     
     // Payment Preferences
     paymentTypes: {
@@ -78,7 +78,7 @@ const CorporateOnboarding = () => {
   const addAccount = () => {
     setFormData(prev => ({
       ...prev,
-      accounts: [...prev.accounts, { accountNumber: "", accountType: "", branchName: "", currency: "USD" }]
+      accounts: [...prev.accounts, { accountNumber: "", accountType: "", branchName: "", currency: "INR" }]
     }));
   };
 
@@ -302,10 +302,10 @@ const CorporateOnboarding = () => {
                       onChange={(e) => updateAccount(index, "currency", e.target.value)}
                       className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md"
                     >
+                      <option value="INR">INR</option>
                       <option value="USD">USD</option>
                       <option value="EUR">EUR</option>
                       <option value="GBP">GBP</option>
-                      <option value="INR">INR</option>
                     </select>
                   </div>
                 </div>
@@ -375,7 +375,7 @@ const CorporateOnboarding = () => {
                     id="monthlyVolume"
                     value={formData.monthlyVolume}
                     onChange={(e) => handleInputChange("monthlyVolume", e.target.value)}
-                    placeholder="e.g., $100,000"
+                    placeholder="e.g., ₹100,000"
                   />
                 </div>
                 <div className="space-y-2">
@@ -384,7 +384,7 @@ const CorporateOnboarding = () => {
                     id="averageTransactionAmount"
                     value={formData.averageTransactionAmount}
                     onChange={(e) => handleInputChange("averageTransactionAmount", e.target.value)}
-                    placeholder="e.g., $5,000"
+                    placeholder="e.g., ₹5,000"
                   />
                 </div>
               </div>
