@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Search, Building2, Calendar, Settings, Star, Shield } from "lucide-react";
+import CorporateEditForm from "@/components/CorporateEditForm";
 
 const CorporateList = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("all");
   const [filterCategory, setFilterCategory] = useState("all");
+  const [editingCorporate, setEditingCorporate] = useState(null);
 
   const corporates = [
     {
@@ -130,6 +132,16 @@ const CorporateList = () => {
     }
   };
 
+  const handleEditCorporate = (corporate) => {
+    setEditingCorporate(corporate);
+  };
+
+  const handleSaveCorporate = (data) => {
+    // Here you would typically update the corporate in your state/backend
+    console.log("Saving corporate data:", data);
+    setEditingCorporate(null);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -234,16 +246,16 @@ const CorporateList = () => {
                       <p className="text-xs text-muted-foreground">Last Activity: {corporate.lastActivity}</p>
                     </div>
                     
-                    <div className="flex flex-col gap-2">
-                      <Button variant="outline" size="sm">
-                        <Settings className="h-3 w-3 mr-1" />
-                        Manage
-                      </Button>
-                      <Button variant="outline" size="sm">
-                        <Calendar className="h-3 w-3 mr-1" />
-                        Schedule
-                      </Button>
-                    </div>
+                     <div className="flex flex-col gap-2">
+                       <Button variant="outline" size="sm" onClick={() => handleEditCorporate(corporate)}>
+                         <Settings className="h-3 w-3 mr-1" />
+                         Manage
+                       </Button>
+                       <Button variant="outline" size="sm">
+                         <Calendar className="h-3 w-3 mr-1" />
+                         Schedule
+                       </Button>
+                     </div>
                   </div>
                 </div>
 
@@ -282,10 +294,19 @@ const CorporateList = () => {
               <p className="text-sm text-muted-foreground">Try adjusting your search or filter criteria</p>
             </CardContent>
           </Card>
-        )}
-      </div>
-    </div>
-  );
-};
+         )}
+       </div>
 
-export default CorporateList;
+       {/* Edit Form Modal */}
+       {editingCorporate && (
+         <CorporateEditForm
+           corporate={editingCorporate}
+           onClose={() => setEditingCorporate(null)}
+           onSave={handleSaveCorporate}
+         />
+       )}
+     </div>
+   );
+ };
+
+ export default CorporateList;

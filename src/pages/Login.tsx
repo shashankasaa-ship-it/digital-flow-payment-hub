@@ -147,7 +147,6 @@ const Login = () => {
             </Button>
 
             <div className="text-center text-sm text-muted-foreground">
-              <p>Demo Credentials: Any username/password combination</p>
               <p>Select your role to see different dashboard features</p>
             </div>
           </CardContent>

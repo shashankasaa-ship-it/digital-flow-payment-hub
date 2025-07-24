@@ -23,7 +23,7 @@ const CorporateOnboarding = () => {
     address: "",
     
     // Account Details
-    accounts: [{ accountNumber: "", accountType: "", bankName: "", currency: "USD" }],
+    accounts: [{ accountNumber: "", accountType: "", branchName: "", currency: "USD" }],
     
     // Payment Preferences
     paymentTypes: {
@@ -32,6 +32,12 @@ const CorporateOnboarding = () => {
       subscription: false,
       domestic: false,
       international: false
+    },
+    domesticPaymentMethods: {
+      neft: false,
+      rtgs: false,
+      imps: false,
+      upi: false
     },
     paymentFrequency: "monthly",
     monthlyVolume: "",
@@ -44,7 +50,11 @@ const CorporateOnboarding = () => {
     // Additional Info
     businessCategory: "",
     riskProfile: "low",
-    kycDocuments: ""
+    kycDocuments: "",
+    
+    // Corporate Category and Prioritization
+    corporateCategory: "general",
+    paymentPrioritization: "normal"
   });
 
   const handleInputChange = (field: string, value: any) => {
@@ -58,10 +68,17 @@ const CorporateOnboarding = () => {
     }));
   };
 
+  const handleDomesticPaymentMethodChange = (method: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      domesticPaymentMethods: { ...prev.domesticPaymentMethods, [method]: checked }
+    }));
+  };
+
   const addAccount = () => {
     setFormData(prev => ({
       ...prev,
-      accounts: [...prev.accounts, { accountNumber: "", accountType: "", bankName: "", currency: "USD" }]
+      accounts: [...prev.accounts, { accountNumber: "", accountType: "", branchName: "", currency: "USD" }]
     }));
   };
 
@@ -270,14 +287,14 @@ const CorporateOnboarding = () => {
                       <option value="fd">Fixed Deposit</option>
                     </select>
                   </div>
-                  <div className="space-y-2">
-                    <Label>Bank Name</Label>
-                    <Input
-                      value={account.bankName}
-                      onChange={(e) => updateAccount(index, "bankName", e.target.value)}
-                      placeholder="Bank name"
-                    />
-                  </div>
+                   <div className="space-y-2">
+                     <Label>Branch Name</Label>
+                     <Input
+                       value={account.branchName}
+                       onChange={(e) => updateAccount(index, "branchName", e.target.value)}
+                       placeholder="Branch name"
+                     />
+                   </div>
                   <div className="space-y-2">
                     <Label>Currency</Label>
                     <select
@@ -316,10 +333,28 @@ const CorporateOnboarding = () => {
                       <Label htmlFor={type} className="capitalize">{type} Payments</Label>
                     </div>
                   ))}
-                </div>
-              </div>
+                 </div>
+               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+               {formData.paymentTypes.domestic && (
+                 <div>
+                   <Label className="text-base font-medium">Domestic Payment Methods</Label>
+                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-3">
+                     {Object.entries(formData.domesticPaymentMethods).map(([method, checked]) => (
+                       <div key={method} className="flex items-center space-x-2">
+                         <Checkbox
+                           id={method}
+                           checked={checked}
+                           onCheckedChange={(checked) => handleDomesticPaymentMethodChange(method, !!checked)}
+                         />
+                         <Label htmlFor={method} className="uppercase">{method}</Label>
+                       </div>
+                     ))}
+                   </div>
+                 </div>
+               )}
+
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="paymentFrequency">Payment Frequency</Label>
                   <select
@@ -412,11 +447,49 @@ const CorporateOnboarding = () => {
                   ))}
                 </div>
               )}
-            </CardContent>
-          </Card>
+             </CardContent>
+           </Card>
 
-          {/* Submit */}
-          <div className="flex justify-end gap-4">
+           {/* Corporate Category and Payment Prioritization */}
+           <Card>
+             <CardHeader>
+               <CardTitle>Corporate Category & Payment Prioritization</CardTitle>
+               <CardDescription>Configure corporate tier and payment priority settings</CardDescription>
+             </CardHeader>
+             <CardContent className="space-y-4">
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                 <div className="space-y-2">
+                   <Label htmlFor="corporateCategory">Corporate Category *</Label>
+                   <select
+                     id="corporateCategory"
+                     value={formData.corporateCategory}
+                     onChange={(e) => handleInputChange("corporateCategory", e.target.value)}
+                     className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md"
+                   >
+                     <option value="general">General</option>
+                     <option value="premium">Premium</option>
+                     <option value="enterprise">Enterprise</option>
+                   </select>
+                 </div>
+                 <div className="space-y-2">
+                   <Label htmlFor="paymentPrioritization">Payment Prioritization *</Label>
+                   <select
+                     id="paymentPrioritization"
+                     value={formData.paymentPrioritization}
+                     onChange={(e) => handleInputChange("paymentPrioritization", e.target.value)}
+                     className="w-full h-10 px-3 py-2 border border-input bg-background rounded-md"
+                   >
+                     <option value="low">Low</option>
+                     <option value="normal">Normal</option>
+                     <option value="high">High</option>
+                   </select>
+                 </div>
+               </div>
+             </CardContent>
+           </Card>
+
+           {/* Submit */}
+           <div className="flex justify-end gap-4">
             <Button variant="outline" onClick={() => navigate("/dashboard")}>
               Cancel
             </Button>

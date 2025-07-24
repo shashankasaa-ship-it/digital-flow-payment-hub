@@ -109,7 +109,7 @@ const Dashboard = () => {
   const stats = [
     { title: "Total Corporates", value: "2,847", icon: Users, change: "+12%" },
     { title: "Active Channels", value: "156", icon: Building2, change: "+8%" },
-    { title: "Today's Transactions", value: "$1.2M", icon: DollarSign, change: "+15%" },
+    { title: "Total Transaction", value: "₹1.2M", icon: DollarSign, change: "+15%" },
     { title: "Success Rate", value: "99.8%", icon: TrendingUp, change: "+0.1%" }
   ];
 

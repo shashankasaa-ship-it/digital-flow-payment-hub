@@ -60,24 +60,87 @@ const Analytics = () => {
     }
   };
 
-  const generateReport = () => {
-    // Simulate report generation
-    const reportData = {
-      dateRange,
-      reportType,
-      generatedAt: new Date().toISOString(),
-      data: stats
-    };
+  const generateReport = async () => {
+    // Dynamic import for xlsx to avoid bundling issues
+    const XLSX = await import('xlsx');
     
-    const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `payment-report-${dateRange}-${Date.now()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    // Create sample report data
+    const worksheetData = [
+      ['Payment Analytics Report'],
+      ['Generated on:', new Date().toLocaleDateString()],
+      ['Date Range:', dateRange],
+      ['Report Type:', reportType],
+      [],
+      ['Transaction Summary'],
+      ['Metric', 'Value'],
+      ['Total Transactions', stats.transactions.total.toLocaleString()],
+      ['Successful Transactions', stats.transactions.successful.toLocaleString()],
+      ['Failed Transactions', stats.transactions.failed.toLocaleString()],
+      ['Returned Transactions', stats.transactions.returned.toLocaleString()],
+      ['Success Rate', `${stats.transactions.successRate}%`],
+      [],
+      ['Volume Summary'],
+      ['Total Volume', stats.volume.total],
+      ['Average Transaction', stats.volume.average],
+      ['Peak Volume', stats.volume.peak],
+      ['Growth Rate', stats.volume.growth],
+      [],
+      ['Channel Performance'],
+      ['Channel', 'Transaction Count'],
+      ['Online Payments', stats.channels.online.toLocaleString()],
+      ['Bulk Payments', stats.channels.bulk.toLocaleString()],
+      ['Subscription Payments', stats.channels.subscription.toLocaleString()],
+      [],
+      ['Approval Status'],
+      ['Stage', 'Count'],
+      ['Total Pending', stats.approval.pending],
+      ['Stage 1 Review', stats.approval.stage1],
+      ['Stage 2 Approval', stats.approval.stage2],
+      ['Final Authorization', stats.approval.stage3],
+      [],
+      ['Recent Transactions'],
+      ['Transaction ID', 'Corporate', 'Amount', 'Type', 'Status', 'Time'],
+      ...recentTransactions.map(tx => [tx.id, tx.corporate, tx.amount, tx.type, tx.status, tx.time])
+    ];
+
+    // Create worksheet and workbook
+    const ws = XLSX.utils.aoa_to_sheet(worksheetData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Payment Report');
+
+    // Style header cells
+    const range = XLSX.utils.decode_range(ws['!ref']);
+    for (let R = range.s.r; R <= range.e.r; ++R) {
+      for (let C = range.s.c; C <= range.e.c; ++C) {
+        const cell_address = { c: C, r: R };
+        const cell_ref = XLSX.utils.encode_cell(cell_address);
+        if (!ws[cell_ref]) continue;
+        
+        // Style headers and section titles
+        const cellValue = worksheetData[R]?.[0];
+        if (R === 0 || (typeof cellValue === 'string' && (cellValue.includes('Summary') || cellValue.includes('Performance') || cellValue.includes('Status') || cellValue.includes('Transactions')))) {
+          ws[cell_ref].s = {
+            font: { bold: true, sz: 12 },
+            fill: { fgColor: { rgb: "E6F3FF" } }
+          };
+        }
+      }
+    }
+
+    // Auto-size columns
+    const wscols = [
+      { wch: 25 }, // Column A
+      { wch: 20 }, // Column B
+      { wch: 15 }, // Column C
+      { wch: 15 }, // Column D
+      { wch: 15 }, // Column E
+      { wch: 10 }  // Column F
+    ];
+    ws['!cols'] = wscols;
+
+    // Generate and download file
+    const fileName = `payment-analytics-report-${dateRange}-${Date.now()}.xlsx`;
+    XLSX.writeFile(wb, fileName);
   };
 
   return (
